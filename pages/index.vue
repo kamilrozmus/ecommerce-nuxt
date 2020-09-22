@@ -1,62 +1,32 @@
 <template>
-  <div class="container">
-    <div>
-      <img src="/logo_black.svg" alt="DH"/>
-      <h1 class="title">RecruitmentTask</h1>
-      <div class="links">
-        <a
-          href="https://github.com/Digital-Holding/RecruitmentTask"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
+  <div>
+    <product-list />
   </div>
 </template>
 
 <script>
-  export default {}
+import ProductList from './ProductsList'
+export default {
+  components: { ProductList }
+}
 </script>
 
-<style>
-  .container {
-    margin: 0 auto;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
+<style lang="scss">
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
 
-  .title {
-    font-family: 'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-    display: block;
-    font-weight: 300;
-    font-size: 100px;
-    color: #35495e;
-    letter-spacing: 1px;
-  }
+::-webkit-scrollbar-track {
+  background: white;
+}
 
-  .subtitle {
-    font-weight: 300;
-    font-size: 42px;
-    color: #526488;
-    word-spacing: 5px;
-    padding-bottom: 15px;
-  }
+::-webkit-scrollbar-thumb {
+  background: #e5e5e5;
+  border-radius: 4px;
+}
 
-  .links {
-    padding-top: 15px;
-  }
+::-webkit-scrollbar-thumb:hover {
+  background: #7a8a8a;
+}
 </style>
