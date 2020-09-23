@@ -1,13 +1,25 @@
 <template>
-  <div>
-    <Nuxt />
+  <div class="main">
+    <div>
+      <Header />
+      <Nuxt />
+    </div>
   </div>
 </template>
+<script>
+import Header from "~/components/Header.vue";
 
-<style>
+export default {
+  components: {
+    Header
+  }
+}
+</script>
+
+<style lang="scss">
 html {
   font-family:
-    'Source Sans Pro',
+    'Montserrat',
     -apple-system,
     BlinkMacSystemFont,
     'Segoe UI',
@@ -17,6 +29,7 @@ html {
     sans-serif;
   font-size: 16px;
   word-spacing: 1px;
+  line-height: 1.4;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
@@ -60,5 +73,18 @@ html {
   color: #fff;
   background-color: #35495e;
 }
-</style>
 
+.main {
+  width: 95vw;
+  padding: 0;
+  margin-left: 2vw;
+}
+
+@media screen and (min-width: 900px) {
+  .main {
+    padding: 40px;
+    margin-left: 8vw;
+    width: 90vw;
+  }
+}
+</style>

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import ProductList from './ProductsList'
+import ProductList from './product-list'
 export default {
   components: { ProductList }
 }
