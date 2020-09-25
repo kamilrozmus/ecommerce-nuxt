@@ -1,5 +1,11 @@
 <template>
   <div class="main">
+    <div class="cart">
+      <nuxt-link exact to="/cart">
+        <b-img src="~/assets/cart.png"  style="width: 70px;" />
+      </nuxt-link>
+      <div class="counter">{{ cartCount }}</div>
+    </div>
     <div>
       <Header />
       <Nuxt />
@@ -8,10 +14,16 @@
 </template>
 <script>
 import Header from "~/components/Header.vue";
+import { mapGetters } from 'vuex'
 
 export default {
   components: {
     Header
+  },
+  computed: {
+    ...mapGetters(['cartCount'])
+  },
+  methods: {
   }
 }
 </script>
@@ -44,40 +56,47 @@ html {
   margin: 0;
 }
 
-.button--green {
+.button-add {
   display: inline-block;
   border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
+  border: 1px solid #ea0;
+  background: #ea0;
   text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
   transition: all .3s;
+  &:hover {
+    background: #ea0;
+  }
 }
 
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+.button-quantity {
+  display: inline-block;
+  border-radius: 4px;
+  border: 1px solid black;
+  background: black;
+  text-decoration: none;
+  &:hover {
+    background: black;
+  }
 }
 
 .main {
   width: 95vw;
   padding: 0;
   margin-left: 2vw;
+}
+
+.cart {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.counter {
+  border-radius: 50%;
+  background: #ea0;
+  font-size: 15px !important;
+  height: 30px;
+  padding: 5px 10px;
+  font-weight: bold;
 }
 
 @media screen and (min-width: 900px) {

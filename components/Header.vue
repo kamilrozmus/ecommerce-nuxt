@@ -15,6 +15,7 @@
 </template>
 
 <script>
+
 export default {
   methods: {
     reloadPage() {
@@ -27,7 +28,7 @@ export default {
 <style lang="scss" scoped>
 header {
   display: flex;
-  padding: 45px 45px 0;
+  padding: 15px 45px 0;
   justify-content: center;
   flex-direction: column;
   align-items: center;
