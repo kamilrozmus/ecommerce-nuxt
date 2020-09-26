@@ -28,8 +28,7 @@ export default {
   /*
   ** Global CSS
   */
-  css: [
-  ],
+  css: ['~/assets/transition.css'],
   /*
   ** Plugins to load before mounting the App
   ** https://nuxtjs.org/guide/plugins
@@ -56,6 +55,9 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
   ],
+  bootstrapVue: {
+    icons: true,
+  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options

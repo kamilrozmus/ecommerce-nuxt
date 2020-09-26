@@ -14,17 +14,6 @@
   </header>
 </template>
 
-<script>
-
-export default {
-  methods: {
-    reloadPage() {
-      window.location.reload()
-    }
-  }
-}
-</script>
-
 <style lang="scss" scoped>
 header {
   display: flex;

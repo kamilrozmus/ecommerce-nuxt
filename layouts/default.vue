@@ -1,10 +1,11 @@
 <template>
   <div class="main">
     <div class="cart">
+      <div v-if="cartCount > 0" class="counter">{{ cartCount }}</div>
+
       <nuxt-link exact to="/cart">
-        <b-img src="~/assets/cart.png"  style="width: 70px;" />
+        <b-img src="~/assets/basket.svg"  style="width: 70px;" />
       </nuxt-link>
-      <div class="counter">{{ cartCount }}</div>
     </div>
     <div>
       <Header />
@@ -82,7 +83,6 @@ html {
 .main {
   width: 95vw;
   padding: 0;
-  margin-left: 2vw;
 }
 
 .cart {
@@ -102,8 +102,8 @@ html {
 @media screen and (min-width: 900px) {
   .main {
     padding: 40px;
-    margin-left: 8vw;
-    width: 90vw;
+    margin: auto;
+    width: 85vw;
   }
 }
 </style>

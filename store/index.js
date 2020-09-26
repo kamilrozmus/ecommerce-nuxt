@@ -23,6 +23,9 @@ import productsService from "../service/productsService"
       } else {
         state.cart.push(payload)
       }
+    },
+    REMOVE_FROM_CART: (state, payload) => {
+      state.cart = state.cart.filter(el => el.id !== payload.id)
     }
   },
   actions = {
@@ -34,9 +37,5 @@ import productsService from "../service/productsService"
       .catch(error => {
         console.log("Error has occured" + error)
       })
-    },
-    async deleteProduct({ dispatch }, payload) {
-      await productsService.deleteProduct(payload)
-      dispatch('fetchProducts')
     }
   }

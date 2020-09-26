@@ -6,11 +6,26 @@
     <div class="product-card d-flex">
       <div class="ml-3">
         <h2>{{ product.name }}</h2>
-        <span style="color: #ea0;">{{ product.price }}</span>
-        <div class="product-description">{{ product.description }}</div>
-        <b-button class="button-quantity" @click="productQuantity > 1 ? productQuantity-- : productQuantity = 1">-</b-button>
-        <input type="number" v-model="productQuantity" />
-        <b-button class="button-quantity" @click="productQuantity++">+</b-button>
+        <span class="font-weight-bold" style="color: #ea0;">{{ product.price }} $</span>
+        <div
+          class="my-3"
+          style="max-width: 80%; text-align: justify;"
+        >
+          {{ product.description }}
+        </div>
+        <b-button
+          class="button-quantity"
+          @click="productQuantity > 1 ? productQuantity-- : productQuantity = 1"
+        >
+          -
+        </b-button>
+        <input v-model="productQuantity" type="number" />
+        <b-button
+          class="button-quantity"
+          @click="productQuantity++"
+        >
+          +
+        </b-button>
         <div>
           <b-modal v-model="showDialog" title="You have added the item to the cart!">
             <div class="d-flex mt-2">
@@ -33,7 +48,7 @@
           </b-modal>
         </div>
         <div class="mt-3">
-          <b-button size="lg" class="button-add" @click="addToCart()">ADD TO CARD</b-button>
+          <b-button size="lg" class="button-add mt-3" @click="addToCart()">ADD TO CARD</b-button>
         </div>
       </div>
     </div>
