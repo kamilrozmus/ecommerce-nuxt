@@ -10,7 +10,7 @@
       <b-icon
         icon="arrow-counterclockwise"
         font-scale="2.5"
-        @click="reloadPage"
+        @click="reloadPage()"
       >
       </b-icon>
     </div>

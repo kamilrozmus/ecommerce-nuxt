@@ -2,9 +2,8 @@
   <div class="main">
     <div class="cart">
       <div v-if="cartCount > 0" class="counter">{{ cartCount }}</div>
-
       <nuxt-link exact to="/cart">
-        <b-img src="~/assets/basket.svg"  style="width: 70px;" />
+        <b-img src="~/assets/basket.svg" style="width: 70px;" />
       </nuxt-link>
     </div>
     <div>
@@ -14,7 +13,7 @@
   </div>
 </template>
 <script>
-import Header from "~/components/Header.vue";
+import Header from '~/components/Header.vue'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -93,7 +92,7 @@ html {
 .counter {
   border-radius: 50%;
   background: #ea0;
-  font-size: 15px !important;
+  font-size: 15px;
   height: 30px;
   padding: 5px 10px;
   font-weight: bold;

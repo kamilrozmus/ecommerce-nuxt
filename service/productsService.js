@@ -12,8 +12,5 @@ const apiClient = axios.create({
 export default {
   getProducts() {
     return apiClient.get('/products')
-  },
-  deleteProduct(rowToDelete) {
-    return apiClient.delete(`/products/${rowToDelete.id}`, rowToDelete)
   }
 }

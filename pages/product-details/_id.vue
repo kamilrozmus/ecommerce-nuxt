@@ -1,8 +1,18 @@
 <template>
   <div class="d-flex mt-5">
-    <div v-if="product.image">
-      <b-img :src="product.image"></b-img>
-    </div>
+    <transition-group name="thumbnailfade" tag="div">
+      <b-img
+        :src="product.image"
+        :key="product.id"
+        style="cursor: pointer;"
+        @click="showLightbox(product.image)"
+      />
+    </transition-group>
+    <lightbox
+      id="mylightbox"
+      ref="lightbox"
+      :images="images"
+    ></lightbox>
     <div class="product-card d-flex">
       <div class="ml-3">
         <h2>{{ product.name }}</h2>
@@ -13,23 +23,34 @@
         >
           {{ product.description }}
         </div>
-        <b-button
-          class="button-quantity"
-          @click="productQuantity > 1 ? productQuantity-- : productQuantity = 1"
-        >
-          -
-        </b-button>
-        <input v-model="productQuantity" type="number" />
-        <b-button
-          class="button-quantity"
-          @click="productQuantity++"
-        >
-          +
-        </b-button>
+        <b-row class="my-1">
+          <b-col class="d-flex">
+            <b-button
+              class="button-quantity mr-2"
+              @click="productQuantity > 1 ? productQuantity-- : productQuantity = 1"
+            >
+              -
+            </b-button>
+            <b-form-input
+              v-model="productQuantity"
+              type="number"
+              style="max-width: 65px;"
+              min="1"
+              max="99"
+            >
+            </b-form-input>
+            <b-button
+              class="button-quantity ml-2"
+              @click="productQuantity++"
+            >
+              +
+            </b-button>
+          </b-col>
+        </b-row>
         <div>
           <b-modal v-model="showDialog" title="You have added the item to the cart!">
             <div class="d-flex mt-2">
-              <div v-if="product.image">
+             <div v-if="product.image">
                 <b-img :src="product.image" style="width: 70px;"></b-img>
               </div>
               <div class="ml-3">
@@ -48,7 +69,14 @@
           </b-modal>
         </div>
         <div class="mt-3">
-          <b-button size="lg" class="button-add mt-3" @click="addToCart()">ADD TO CARD</b-button>
+          <b-button
+            size="lg"
+            class="button-add mt-3"
+            :disabled="!maxNumber"
+            @click="addToCart()"
+          >
+            ADD TO CARD
+          </b-button>
         </div>
       </div>
     </div>
@@ -61,16 +89,20 @@ export default {
     return {
       productId: null,
       productQuantity: 1,
-      showDialog: false
+      showDialog: false,
+      images: [{ 'name': 'https://lorempixel.com/250/250' }]
     }
   },
   computed: {
+    maxNumber() {
+      return this.productQuantity >= 1 && this.productQuantity <= 99 ? true : false
+    },
     ...mapGetters({
       products: 'getProducts'
     }),
     product() {
       this.productId = Number(this.$route.params.id)
-      return this.products.find(el => el.id === this.productId);
+      return this.products.find(el => el.id === this.productId)
     }
   },
    methods: {
@@ -81,11 +113,14 @@ export default {
         ...item,
         productQuantity: this.productQuantity
       }
-      this.$store.commit("ADD_TO_CART", {...item} )
+      this.$store.commit("ADD_TO_CART", { ...item })
     },
     goToCart() {
       this.$router.push({ path: '/cart' })
       this.showDialog = false
+    },
+    showLightbox (imageName) {
+      this.$refs.lightbox.show(imageName)
     },
     ...mapActions(['fetchProducts'])
   },
