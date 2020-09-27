@@ -111,7 +111,7 @@ export default {
       let item = this.product
       item = {
         ...item,
-        productQuantity: this.productQuantity
+        productQuantity: Number(this.productQuantity)
       }
       this.$store.commit("ADD_TO_CART", { ...item })
     },
